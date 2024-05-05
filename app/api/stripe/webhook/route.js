@@ -26,7 +26,9 @@ export async function POST(request) {
         { 
           $set: { 
             currentImageName: resp.imageName,
-            currentAdId: resp.sesionId 
+            currentAdId: resp.sesionId,
+            currentAdAccesses: 0,
+            currentAdViews: 0,
           },
           $inc: { currentAdCount: 1 }
         }
