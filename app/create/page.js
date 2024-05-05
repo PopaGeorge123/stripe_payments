@@ -29,7 +29,6 @@ export default function CreateAd() {
         email: email,
         imageUrl : imageUrl
       };
-      formData.append('data', JSON.stringify(jsonObject));
 
       const response = await fetch('/api/ads/create', {
         method: 'POST',
