@@ -11,6 +11,7 @@ export async function GET(request, response) {
     { testId: "test13579" }, // Filter criteria
     { $inc: { ["currentAdViews"]: 1 } } // Use $inc to increment the specified field
   );
+  const allPosts = await Post.find();
 
   if (!conf) {
     return NextResponse.json({ error: "No config data found" }, { status: 404 });
@@ -20,7 +21,9 @@ export async function GET(request, response) {
   if (!ad) {
     return NextResponse.json({ error: "No ad data found" }, { status: 404 });
   }
+
+  console.log("ALL POSTS: ", allPosts)
   
-  const mergedData = { data: [conf, ad] };
+  const mergedData = { data: [conf, ad , allPosts] };
   return NextResponse.json(mergedData, { status: 200 });
 }

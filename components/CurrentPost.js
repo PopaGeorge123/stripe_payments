@@ -5,11 +5,16 @@ import Image from 'next/image';
 import Link from 'next/link';
 import ViewsIcn from '../public/assets/images/views-img.svg';
 import VisitsIcn from '../public/assets/images/visits.svg';
+import downArrow from '../public/assets/images/down.svg';
+
+import AdTemplate from '@/components/AdTemplate';
 
 const CurrentPost = () => {
   const [opened, setOpened] = useState(false);
+  const [openedBuyers, setOpenedBuyers] = useState(false);
   const [currentAdCfg, setCurrentAdCfg] = useState({});
   const [currentAd, setCurrentAd] = useState({});
+  const [allAds, setAllAds] = useState([]);
 
   useEffect(() => {
     const fetchCurrentAd = async () => {
@@ -18,6 +23,7 @@ const CurrentPost = () => {
       //console.log("DATA FROM SERVER:", data.data);
       setCurrentAdCfg(data.data[0]);
       setCurrentAd(data.data[1]);
+      setAllAds(data.data[2]);
     };
     fetchCurrentAd();
   }, []);
@@ -105,7 +111,29 @@ const CurrentPost = () => {
             </div>
           </div>
         )}
+        <div className="flex pb-2" 
+          onClick={()=>setOpenedBuyers(!openedBuyers)}
+          style={{ cursor: "pointer" }}
+        >
+          <Image 
+            className='object-cover mx-1'
+            src={downArrow}
+            alt='current ranked'
+            width='24'
+            height='24'
+          /> <h1 className='text-slate-500 mx-1'>All Buyers</h1>
+        </div>
       </div>
+      {openedBuyers && (
+          <div className="my-5 mx-auto px-4 md:max-w-3xl lg:max-w-4xl border rounded-md bg-slate-100">
+            <h1 className='text-center'>All Buyers</h1>
+            
+            {allAds.map((ad, index) => (
+              <AdTemplate key={index} ad={ad} />
+            ))}
+
+          </div>
+        )}
     </div>
   );
 };
