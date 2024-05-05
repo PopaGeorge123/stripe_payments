@@ -11,7 +11,9 @@ const stripeApi = new stripe(process.env.STRIPE_SECRET_KEY, {
 
 export const POST = async (req, res) => {
   await connectMongoDB();
-  const jsonObject = req.json();
+  const jsonObject = await req.json();
+
+  console.log("Request body ", jsonObject);
 
   try {
     const conf = await Config.findOne({ testId: "test13579" });
