@@ -15,7 +15,7 @@ const CurrentPost = () => {
     const fetchCurrentAd = async () => {
       const res = await fetch('/api/ads/current');
       const data = await res.json();
-      console.log("DATA FROM SERVER:", data.data);
+      //console.log("DATA FROM SERVER:", data.data);
       setCurrentAdCfg(data.data[0]);
       setCurrentAd(data.data[1]);
     };
@@ -41,10 +41,10 @@ const CurrentPost = () => {
       <div className="my-5 mx-auto px-4 md:max-w-3xl lg:max-w-4xl border rounded-md">
         <h1 className='text-center font-mono text-xl'>{currentAd.title}</h1>
         <div className='flex justify-center items-center'>
-          {currentAdCfg.currentImageName &&
+          {currentAd.imageUrl &&
           <Image 
             className='object-cover mx-5 my-5'
-            src={`/assets/currentImage/${currentAdCfg.currentImageName}`}
+            src={`/assets/currentImage/${currentAd.imageUrl}`}
             alt='current ranked'
             width='350'
             height='350'

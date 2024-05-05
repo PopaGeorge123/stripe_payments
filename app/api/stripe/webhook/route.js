@@ -31,7 +31,7 @@ export async function POST(request) {
           $inc: { currentAdCount: 1 }
         }
       );
-      await cleanFolder(resp.imageName)
+      //await cleanFolder(resp.imageName)
       
       console.log("Config updated",cnfg);
       console.log("Payment was successful");

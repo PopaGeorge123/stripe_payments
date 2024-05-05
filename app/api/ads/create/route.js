@@ -3,7 +3,6 @@ import connectMongoDB from '@/utils/database';
 import  Post  from '@/models/Post'; 
 import  Config  from '@/models/Config'; 
 import { NextResponse } from 'next/server';
-import { saveFile } from "../../../../local/local";
 import stripe from "stripe";
 
 const stripeApi = new stripe(process.env.STRIPE_SECRET_KEY, {
@@ -12,17 +11,7 @@ const stripeApi = new stripe(process.env.STRIPE_SECRET_KEY, {
 
 export const POST = async (req, res) => {
   await connectMongoDB();
-  const formData = await req.formData();
-
-  const file = await formData.get("file");
-  const jsonObject = await JSON.parse(formData.get("data"));
-
-  console.log("File received ", file);
-  console.log("JSON Object received ", jsonObject);
-
-  if (!file) {
-    return NextResponse.json({ error: "No files received." }, { status: 400 });
-  }
+  const jsonObject = req.json();
 
   try {
     const conf = await Config.findOne({ testId: "test13579" });
@@ -44,13 +33,14 @@ export const POST = async (req, res) => {
       sesionId : session.id,
       title: jsonObject.title,
       url: jsonObject.url,
-      imageName: file.name,
+      imageUrl: jsonObject.imageUrl,
       email: jsonObject.email
     });
     await post.save();
-    const saved = await saveFile(file)
     
-    if(saved && session && post){
+    //const saved = await saveFile(file)
+    
+    if(session && post){
       return NextResponse.json({ session }, {status: 200 });
     }
   } catch (error) {

@@ -4,7 +4,7 @@ const postSchema = new mongoose.Schema({
   sesionId: { type: String, required: true },
   title: { type: String, required: true },
   url: { type: String, required: true },
-  imageName: { type: String, required: true },
+  imageUrl: { type: String, required: true },
   email: { type: String, required: true },
 });
 
