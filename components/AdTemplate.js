@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link";
 import React from "react";
 
 const AdComponent = ({ ad }) => {
@@ -15,9 +16,11 @@ const AdComponent = ({ ad }) => {
           />
         </div>
         <h1 className="text-4xl font-bold text-center">{ad.title}</h1>
-        <button className="bg-pink-500 text-white px-2 py-2 rounded-lg uppercase font-bold text-lg hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-500">
+        <Link className="bg-pink-500 text-white px-2 py-2 rounded-lg uppercase font-bold text-lg hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-500"
+          href={ad.url}
+        >
           Visit this Website
-        </button>
+        </Link>
       </div>
     );
   };
