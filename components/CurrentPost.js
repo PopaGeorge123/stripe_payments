@@ -44,7 +44,7 @@ const CurrentPost = () => {
           {currentAd.imageUrl &&
           <Image 
             className='object-cover mx-5 my-5'
-            src={`${currentAd.imageUrl}`}
+            src={currentAd.imageUrl}
             alt='current ranked'
             width='350'
             height='350'
