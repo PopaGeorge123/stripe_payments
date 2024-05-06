@@ -20,7 +20,7 @@ const CurrentPost = () => {
     const fetchCurrentAd = async () => {
       const res = await fetch('/api/ads/current');
       const data = await res.json();
-      //console.log("DATA FROM SERVER:", data.data);
+      console.log("DATA FROM SERVER:", data.data);
       setCurrentAdCfg(data.data[0]);
       setCurrentAd(data.data[1]);
       setAllAds(data.data[2]);
@@ -29,16 +29,27 @@ const CurrentPost = () => {
   }, []);
 
   const updateLinkVisited = async () => {
-    const res = await fetch('/api/ads/update', {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        update: "currentAdAccesses"
-      })
-    });
+    try {
+      const res = await fetch('/api/ads/update', {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          update: "currentAdAccesses"
+        })
+      });
+  
+      if (!res.ok) {
+        throw new Error('Failed to update link visited');
+      }
+      const data = await res.json();
+      console.log("DATA FROM SERVER:", data);
+    } catch (error) {
+      console.error('Error updating link visited:', error);
+    }
   };
+  
   
 
   return (
