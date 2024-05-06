@@ -20,7 +20,7 @@ const CurrentPost = () => {
     const fetchCurrentAd = async () => {
       const res = await fetch('/api/ads/current');
       const data = await res.json();
-      console.log("DATA FROM SERVER:", data.data);
+      //console.log("DATA FROM SERVER:", data.data);
       setCurrentAdCfg(data.data[0]);
       setCurrentAd(data.data[1]);
       setAllAds(data.data[2]);

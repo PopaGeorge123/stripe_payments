@@ -7,13 +7,13 @@ export async function POST(request, response) {
     await connectMongoDB();
     const body = await request.json();
     const updateItem = body.update
-    console.log(updateItem)
+    console.log("ITEM",updateItem)
 
     const updatedData = await Config.updateOne(
       { testId: "test13579" }, // Filter criteria
       { $inc: { [updateItem]: 1 } } // Use $inc to increment the specified field
     );
-    //console.log(updatedData)
+    //console.log("Updated DATA : ",updatedData)
 
     if (updatedData) {
       return NextResponse.json({ message: "Field updated successfully" }, { status: 200 });
