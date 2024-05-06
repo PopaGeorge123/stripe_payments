@@ -15,7 +15,7 @@ export async function POST(request, response) {
     );
     //console.log(updatedData)
 
-    if (updatedData.ok === 1) {
+    if (updatedData) {
       return NextResponse.json({ message: "Field updated successfully" }, { status: 200 });
     } else {
       return NextResponse.json({ error: "Failed to update field" }, { status: 500 });
