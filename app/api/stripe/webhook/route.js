@@ -21,6 +21,15 @@ export async function POST(request) {
       console.log("FILE : ", initilConf.currentImageName)
       //console.log("SESS : ",resp.sesionId)
 
+      const setPaid = await Post.updateOne(
+        {sesionId: sesionId},
+        { 
+          $set: { 
+            paid: true,
+          }
+        }
+      );
+
       const cnfg = await Config.updateOne(
         { testId: "test13579" },
         { 
@@ -38,10 +47,11 @@ export async function POST(request) {
       console.log("Config updated",cnfg);
       console.log("Payment was successful");
 
-      const allUsers = await Post.find();
-      const emailsToSend = allUsers.filter(user => user.email);
+      //find all user that has paid = true
+
+      const allUsers = await Post.find({paid: true});
       
-      await Promise.all(emailsToSend.map(async (user) => {
+      await Promise.all(allUsers.map(async (user) => {
         await sendNewsletterMail(user.email, user.title, user.url);
         console.log("Email sent to ", user.email);
       }));

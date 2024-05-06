@@ -3,10 +3,11 @@ import connectMongoDB from '@/utils/database';
 import Config from "@/models/Config";
 
 export async function POST(request, response) {
-  await connectMongoDB();
   try {
+    await connectMongoDB();
     const body = await request.json();
     const updateItem = body.update
+    console.log(updateItem)
 
     const updatedData = await Config.updateOne(
       { testId: "test13579" }, // Filter criteria

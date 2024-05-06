@@ -6,6 +6,7 @@ const postSchema = new mongoose.Schema({
   url: { type: String, required: true },
   imageUrl: { type: String, required: true },
   email: { type: String, required: true },
+  paid: { type: Boolean, required: true },
 });
 
 const Post = mongoose.models.Post || mongoose.model('Post', postSchema);

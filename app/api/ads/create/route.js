@@ -36,7 +36,8 @@ export const POST = async (req, res) => {
       title: jsonObject.title,
       url: jsonObject.url,
       imageUrl: jsonObject.imageUrl,
-      email: jsonObject.email
+      email: jsonObject.email,
+      paid: false,
     });
     await post.save();
     
