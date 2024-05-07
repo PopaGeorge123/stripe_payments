@@ -69,7 +69,7 @@ const CurrentPost = () => {
           }
         </div>
         {currentAd.url && (
-          <div className="flex justify-center">
+          <div className="flex justify-center my-4">
             <Link onClick={updateLinkVisited} href={currentAd.url} className='rounded bg-purple-700 px-2 py-2 text-white text-center'>
               Visit Website
             </Link>
@@ -132,12 +132,12 @@ const CurrentPost = () => {
             alt='current ranked'
             width='24'
             height='24'
-          /> <h1 className='text-slate-500 mx-1'>All Buyers</h1>
+          /> <h1 className='text-slate-500 mx-1'>{openedBuyers == true?'Close':'All Buyers'}</h1>
         </div>
       </div>
       {openedBuyers && (
           <div className="my-5 mx-auto px-4 md:max-w-3xl lg:max-w-4xl border rounded-md bg-slate-100">
-            <h1 className='text-center'>{openedBuyers == true?'Close':'All Buyers'}</h1>
+            <h1 className='text-center'>All Buyers</h1>
             
             {allAds.map((ad, index) => (
               <AdTemplate key={index} ad={ad} />
