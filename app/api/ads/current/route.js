@@ -17,7 +17,7 @@ export async function GET(request, response) {
     const allPosts = await Post.find({ paid: true });
     const ad = await Post.findOne({ sesionId: conf.currentAdId });
     
-    //console.log("CONFIG: ", ad);
+    console.log("CONFIG: ", conf);
 
     if (!conf) {
       return NextResponse.json({ error: "No config data found" }, { status: 404 });
@@ -29,9 +29,7 @@ export async function GET(request, response) {
     console.log("ALL POSTS: ", allPosts);
 
     const mergedData = { data: [conf, ad, allPosts] };
-    return NextResponse.json(mergedData, { 
-      status: 200,
-    });
+    return NextResponse.json(mergedData, { status: 200 });
   } catch (error) {
     console.error("An error occurred:", error);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
