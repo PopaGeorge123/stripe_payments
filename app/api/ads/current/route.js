@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 import connectMongoDB from '@/utils/database';
 import Config from "@/models/Config";
 import Post from "@/models/Post";
-import { cookies } from 'next/headers'
 
 export async function GET(request, response) {
   try {

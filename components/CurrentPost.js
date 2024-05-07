@@ -18,7 +18,7 @@ const CurrentPost = () => {
 
   useEffect(() => {
     const fetchCurrentAd = async () => {
-      const res = await fetch('/api/ads/current');
+      const res = await fetch('/api/ads/current',{ cache: 'no-store' });
       const data = await res.json();
       //console.log("DATA FROM SERVER:", data.data);
       setCurrentAdCfg(data.data[0]);
@@ -38,6 +38,7 @@ const CurrentPost = () => {
         body: JSON.stringify({
           update: "currentAdAccesses"
         })
+        , cache: 'no-store'
       });
   
       if (!res.ok) {
