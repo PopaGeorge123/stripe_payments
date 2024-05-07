@@ -18,9 +18,8 @@ const CurrentPost = () => {
 
   useEffect(() => {
     const fetchCurrentAd = async () => {
-      const res = await fetch('/api/ads/current',{ cache: 'no-store' });
+      const res = await fetch('/api/ads/current', { cache: 'no-store' });
       const data = await res.json();
-      //console.log("DATA FROM SERVER:", data.data);
       setCurrentAdCfg(data.data[0]);
       setCurrentAd(data.data[1]);
       setAllAds(data.data[2]);
@@ -37,8 +36,8 @@ const CurrentPost = () => {
         },
         body: JSON.stringify({
           update: "currentAdAccesses"
-        })
-        , cache: 'no-store'
+        }),
+        cache: 'no-store'
       });
   
       if (!res.ok) {
@@ -50,6 +49,7 @@ const CurrentPost = () => {
       console.error('Error updating link visited:', error);
     }
   };
+  
   
   
 
