@@ -3,16 +3,17 @@
 import Link from "next/link";
 import React from "react";
 
-const AdComponent = ({ ad }) => {
+const AdComponent = ({ ad },{key}) => {
     return (
-      <div className="flex items-center justify-between bg-gray-100 p-8">
-        <div className="flex-none mr-8">
+      <div className="flex items-center justify-between bg-gray-100 py-1">
+        <div className="flex-none">
+          <h1 className="text-xl font-bold text-center">{key}</h1>
           <img
-            className="object-cover w-32 h-32 rounded-lg"
+            className="object-cover mx-1 w-32 h-32 rounded-lg"
             src={ad.imageUrl}
             alt="current ranked"
-            width={50}
-            height={50}
+            width="10%"
+            height="10%"
           />
         </div>
         <h1 className="text-xl font-bold text-center">{ad.title}</h1>

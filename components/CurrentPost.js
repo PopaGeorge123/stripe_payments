@@ -115,8 +115,8 @@ const CurrentPost = () => {
                 className='object-cover mx-1'
                 src={VisitsIcn}
                 alt='current ranked'
-                width='24'
-                height='24'
+                width='22'
+                height='22'
               />
               <h1 className='mx-1'>show how many people visited your advertisement</h1>
             </div>
@@ -137,7 +137,7 @@ const CurrentPost = () => {
       </div>
       {openedBuyers && (
           <div className="my-5 mx-auto px-4 md:max-w-3xl lg:max-w-4xl border rounded-md bg-slate-100">
-            <h1 className='text-center'>All Buyers</h1>
+            <h1 className='text-center'>{openedBuyers == true?'Close':'All Buyers'}</h1>
             
             {allAds.map((ad, index) => (
               <AdTemplate key={index} ad={ad} />
