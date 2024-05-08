@@ -103,7 +103,7 @@ const CurrentPost = () => {
           <div className="my-5 mx-auto px-4 md:max-w-3xl lg:max-w-4xl border rounded-md bg-slate-100">
             <div className='flex my-2'>
               <Image 
-                className='object-cover mx-1'
+                className='object-fit mx-1'
                 src={ViewsIcn}
                 alt='current ranked'
                 width='20'
@@ -113,7 +113,7 @@ const CurrentPost = () => {
             </div>
             <div className='flex my-2'>
               <Image 
-                className='object-cover mx-1'
+                className='object-fit mx-1'
                 src={VisitsIcn}
                 alt='current ranked'
                 width='22'
@@ -141,8 +141,9 @@ const CurrentPost = () => {
             <h1 className='text-center'>All Buyers</h1>
             
             {allAds.map((ad, index) => (
-              <AdTemplate key={index} ad={ad} />
+              <AdTemplate key={index} ad={ad} index={index} />
             ))}
+
 
           </div>
         )}

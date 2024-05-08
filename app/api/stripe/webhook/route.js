@@ -5,7 +5,6 @@ import { NextResponse } from "next/server";
 import Post from '@/models/Post';
 import Config from '@/models/Config';
 import connectMongoDB from '@/utils/database';
-import { saveFile , cleanFolder } from "@/local/local";
 import { sendNewsletterMail } from "@/libs/emails";
 
 export async function POST(request) {

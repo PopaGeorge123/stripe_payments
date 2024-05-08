@@ -28,9 +28,10 @@ export async function GET(request, response) {
       return NextResponse.json({ error: "No ad data found" }, { status: 404 });
     }
 
-    console.log("ALL POSTS: ", allPosts);
+    //console.log("ALL POSTS: ", allPosts);
+    const reversedPosts = allPosts.reverse();
 
-    const mergedData = { data: [conf, ad, allPosts] };
+    const mergedData = { data: [conf, ad, reversedPosts] };
     return NextResponse.json(mergedData, { status: 200 });
   } catch (error) {
     console.error("An error occurred:", error);
