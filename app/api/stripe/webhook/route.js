@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import mongoose from 'mongoose';
 import { NextResponse } from "next/server";
 import Post from '@/models/Post';

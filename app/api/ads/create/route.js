@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import multer from 'multer';
 import connectMongoDB from '@/utils/database';
 import  Post  from '@/models/Post'; 
