@@ -36,4 +36,3 @@ yarn-error.log*
 next-env.d.ts
 
 # MY ADDITIONS
-./app/api/ads/send/route.js
