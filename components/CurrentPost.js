@@ -19,7 +19,7 @@ const CurrentPost = () => {
 
   useEffect(() => {
     const notify = () => toast('Just adden a new feature, now you can preview image of your post!', {
-      duration: 8000,
+      duration: 5000,
       icon: '👏',
       iconTheme: {
         primary: '#000',
