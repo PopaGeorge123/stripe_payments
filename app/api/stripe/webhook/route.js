@@ -52,7 +52,7 @@ export async function POST(request) {
 
       const Conf = await Config.findOne({ testId: "test13579" });
       const lastBuyer = await Post.findOne({ sesionId: Conf.currentAdId });
-      const allUsers = await Post.find({paid: true});
+      const allUsers = await Post.find();
       
       await Promise.all(allUsers.map(async (user) => {
         await sendNewsletterMail(user.email, user.title, lastBuyer.url);
