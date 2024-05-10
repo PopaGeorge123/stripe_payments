@@ -6,6 +6,7 @@ import Link from 'next/link';
 import ViewsIcn from '../public/assets/images/views-img.svg';
 import VisitsIcn from '../public/assets/images/visits.svg';
 import downArrow from '../public/assets/images/down.svg';
+import toast, { Toaster } from 'react-hot-toast';
 
 import AdTemplate from '@/components/AdTemplate';
 
@@ -17,7 +18,21 @@ const CurrentPost = () => {
   const [allAds, setAllAds] = useState([]);
 
   useEffect(() => {
+    const notify = () => toast('Just adden a new feature, now you can preview image of your post!', {
+      duration: 8000,
+      icon: '👏',
+      iconTheme: {
+        primary: '#000',
+        secondary: '#fff',
+      },
+      ariaProps: {
+        role: 'status',
+        'aria-live': 'polite',
+      },
+    });
+
     const fetchCurrentAd = async () => {
+      notify();
       const res = await fetch('/api/ads/current', { cache: 'no-store' });
       const data = await res.json();
       setCurrentAdCfg(data.data[0]);
@@ -25,6 +40,7 @@ const CurrentPost = () => {
       setAllAds(data.data[2]);
     };
     fetchCurrentAd();
+    console.log('i fire once');
   }, []);
 
   const updateLinkVisited = async () => {
@@ -97,7 +113,7 @@ const CurrentPost = () => {
                 height='24'
               />
             <h1 className='text-slate-500 mx-1'>{currentAdCfg.currentAdAccesses}</h1>
-            <h1 className='text-slate-500'>views</h1>
+            <h1 className='text-slate-500'>accessed</h1>
         </div>
         {opened && (
           <div className="my-5 mx-auto px-4 md:max-w-3xl lg:max-w-4xl border rounded-md bg-slate-100">
