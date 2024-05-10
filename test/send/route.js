@@ -7,12 +7,12 @@ import { cp } from "fs";
 export async function GET(request) {
 
     const user = {
-        email: "testservices430@gmail.com",
-        title: "Hello",
+        email: "vedacms@gmail.com",
+        title: "Moonlink",
     };
 
     const lastBuyer = {
-        url: "https://www.google.com",
+        url: "https://www.tinrocket.com/apps/photo-tape/",
     };
 
     await sendNewsletterMail(user.email, user.title, lastBuyer.url);
