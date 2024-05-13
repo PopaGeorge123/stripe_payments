@@ -18,21 +18,21 @@ const CurrentPost = () => {
   const [allAds, setAllAds] = useState([]);
 
   useEffect(() => {
-    const notify = () => toast('Just adden a new feature, now you can preview image of your post!', {
-      duration: 5000,
-      icon: '👏',
-      iconTheme: {
-        primary: '#000',
-        secondary: '#fff',
-      },
-      ariaProps: {
-        role: 'status',
-        'aria-live': 'polite',
-      },
-    });
+    // const notify = () => toast('Just adden a new feature, now you can preview image of your post!', {
+    //   duration: 5000,
+    //   icon: '👏',
+    //   iconTheme: {
+    //     primary: '#000',
+    //     secondary: '#fff',
+    //   },
+    //   ariaProps: {
+    //     role: 'status',
+    //     'aria-live': 'polite',
+    //   },
+    // });
 
     const fetchCurrentAd = async () => {
-      notify();
+      //notify();
       const res = await fetch('/api/ads/current', { cache: 'no-store' });
       const data = await res.json();
       setCurrentAdCfg(data.data[0]);
